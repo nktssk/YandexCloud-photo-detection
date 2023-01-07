@@ -8,9 +8,6 @@ URL = os.environ['URL']
 MQ_URL = os.environ['MQ_URL']
 API_KEY = os.environ['API_SECRET_KEY']
 
-
-
-
 def get_face_detection_request(content):
     return {
         "analyze_specs": [{

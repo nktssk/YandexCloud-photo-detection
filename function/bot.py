@@ -10,7 +10,6 @@ driver: ydb.Driver
 PHOTO_LINK_TEMPLATE = os.getenv("PHOTO_LINK_TEMPLATE")
 OBJECT_LINK_TEMPLATE = os.getenv("OBJECT_LINK_TEMPLATE")
 
-
 def get_driver():
     endpoint = os.getenv("DB_ENDPOINT")
     path = os.getenv("DB_PATH")
@@ -81,15 +80,13 @@ def handler(event, context):
     set_up()
     request = event['body']
     update = telegram.Update.de_json(json.loads(request), BOT)
-
     chat_id = update.message.chat.id
     command = update.message.text.encode('utf-8').decode()
-
-    if command == '/start':
-        BOT.sendMessage(chat_id=chat_id, text='Hello)')
-        return
     if command == '/getface':
         get_face(chat_id)
+        return
+    if command == '/start':
+        BOT.sendMessage(chat_id=chat_id, text='Hello)')
         return
     if command.startswith('/find'):
         args = command.split(' ')

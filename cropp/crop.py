@@ -17,8 +17,6 @@ app = Sanic(__name__)
 ydb_driver: ydb.Driver
 config: dict
 
-
-
 @app.after_server_start
 async def after_server_start(app, loop):
     print(f"App listening at port {os.environ['PORT']}")
